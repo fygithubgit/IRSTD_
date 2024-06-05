@@ -7,6 +7,7 @@ from utils import *
 import os
 from loss import *
 from model import *
+from model import SCTransNet
 from skimage.feature.tests.test_orb import img
 from model.SCTransNet.Config import get_SCTrans_config
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
@@ -27,7 +28,9 @@ class Net(nn.Module):
                 self.model = SCTransNet(mode='train')
             else:
                 config_vit = get_SCTrans_config()
-                self.model = SCTransNet(config_vit, mode='test', deepsuper=True)   
+                #self.model = SCTransNet(config_vit, mode='test', deepsuper=True)
+                self.model = SCTransNet.SCTransNet(config_vit, mode='test', deepsuper=True)   
+
         # elif model_name == 'DNANet_BY':
         #     if mode == 'train':
         #         self.model = DNAnet_BY(mode='train')

@@ -41,7 +41,9 @@ class TrainSetLoader(Dataset):
 class TestSetLoader(Dataset):
     def __init__(self, dataset_dir, train_dataset_name, test_dataset_name, img_norm_cfg=None):
         super(TestSetLoader).__init__()
-        self.dataset_dir = dataset_dir + '/' + test_dataset_name
+        #self.dataset_dir = dataset_dir + '/' + test_dataset_name
+        self.dataset_dir = dataset_dir 
+        #with open(self.dataset_dir + '/img_idx/test_' + test_dataset_name + '.txt', 'r') as f:
         with open(self.dataset_dir + '/img_idx/test_' + test_dataset_name + '.txt', 'r') as f:
             self.test_list = f.read().splitlines()
         if img_norm_cfg == None:

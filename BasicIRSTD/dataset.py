@@ -53,11 +53,11 @@ class TestSetLoader(Dataset):
         
     def __getitem__(self, idx):
         try:
-            img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.png').replace('//','/')).convert('I')
-            mask = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.png').replace('//','/'))
+            img = Image.open(('/' + self.dataset_dir + '/images/' + self.test_list[idx] + '.png').replace('//','/')).convert('I')
+            mask = Image.open(('/' + self.dataset_dir + '/masks/' + self.test_list[idx] + '.png').replace('//','/'))
         except:
-            img = Image.open((self.dataset_dir + '/images/' + self.test_list[idx] + '.bmp').replace('//','/')).convert('I')
-            mask = Image.open((self.dataset_dir + '/masks/' + self.test_list[idx] + '.bmp').replace('//','/'))
+            img = Image.open(('/' + self.dataset_dir + '/images/' + self.test_list[idx] + '.bmp').replace('//','/')).convert('I')
+            mask = Image.open(('/' + self.dataset_dir + '/masks/' + self.test_list[idx] + '.bmp').replace('//','/'))
 
         img = Normalized(np.array(img, dtype=np.float32), self.img_norm_cfg)
         mask = np.array(mask, dtype=np.float32)  / 255.0
